@@ -35,6 +35,9 @@ export default class App extends React.Component {
 
   getSearchKeyword(itemperpage) {
     //this.state.GitHubArray = [];
+    if (this.state.itemperpage == 10) {
+      this.state.GitHubArray = [];
+    } 
     const { TextInputValue }  = this.state ;
     this.setState({ loading: true })
     fetch("https://api.github.com/search/repositories?per_page="+itemperpage+"&q="+TextInputValue)
@@ -158,7 +161,7 @@ export default class App extends React.Component {
               placeholder="Enter Keyword.."
               underlineColorAndroid="transparent"
               onChangeText={TextInputValue => this.setState({TextInputValue})}
-              onSubmitEditing={(text) => this.getSearchKeyword(this.state.itemperpage)}
+              onSubmitEditing={(text) => this.getSearchKeyword(10)}
               value
             />
         <SafeAreaView>
